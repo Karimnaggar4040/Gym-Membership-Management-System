@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import java.util.ArrayList;
@@ -14,7 +17,21 @@ public class MemberDatabase {
 
     // METHODS
     public void readFromFile() {
+        try {
+            String content = Files.readString(Paths.get(fileName));
+            String[] lines = content.split("\n");
+            for (String line : lines) {
+                String[] parts = line.split(",");
 
+                Member member= new Member (parts[0], parts[1], parts[2], parts[3],parts[4],parts[5]);
+                records.add(member);
+            }
+            for (Member member : records) {
+                System.out.println("records: " + member.lineRepresentation());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Member createRecordFrom(String line) {
@@ -58,5 +75,5 @@ public class MemberDatabase {
     public void saveToFile() {
 
     }
-    
+
 }
