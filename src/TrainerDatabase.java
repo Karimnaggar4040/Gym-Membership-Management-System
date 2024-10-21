@@ -9,7 +9,7 @@ public class TrainerDatabase {
     // CONSTRUCTOR
     public TrainerDatabase(String fileName) {
         this.fileName = fileName;
-        // Initialize the Arraylist to prepare the system to handle trainer data by R/W to the file
+        records = new ArrayList<Trainer>();
     }
 
     // METHODS
