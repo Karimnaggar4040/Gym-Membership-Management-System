@@ -15,12 +15,12 @@ public class Trainer {
     }
 
     // METHODS
-    public String lineRepresentation(Trainer trainer) {
-
+    public String lineRepresentation() {
+        return trainerId + "," + name + "," + email + "," + speciality + "," + phoneNumber;
     }
 
-    public String getSearchKey(Trainer trainer) {
-        return trainer.trainerId;
+    public String getSearchKey() {
+        return trainerId;
     }
 
 }

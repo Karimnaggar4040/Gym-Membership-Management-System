@@ -1,13 +1,15 @@
+import java.time.LocalDate;
+
 public class MemberClassRegistration {
     private String memberID;
     private String classID;
     private String status;
 
-    private String registrationDate; //! local 
+    private LocalDate registrationDate; // format : YYYY-MM-DD
 
     
     // CONSTRUCTORS
-    public MemberClassRegistration(String memberID, String classID, String status, String registrationDate) {
+    public MemberClassRegistration(String memberID, String classID, String status, LocalDate registrationDate) {
         this.memberID = memberID;
         this.classID = classID;
         this.status = status;
@@ -23,7 +25,7 @@ public class MemberClassRegistration {
         return classID;
     }
 
-    public String getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 

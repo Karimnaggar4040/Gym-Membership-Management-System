@@ -25,7 +25,7 @@ public class Class {
         this.availableSeats = availableSeats;
     }
 
-    public String lineRepresntation() {
+    public String lineRepresentation() {
         return classID + "," + className + "," + trainerID + "," + duration + "," + availableSeats;
     }
 
