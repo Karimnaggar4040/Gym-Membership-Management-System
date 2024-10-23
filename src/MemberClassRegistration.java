@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class MemberClassRegistration {
+public class MemberClassRegistration implements PrimaryInterface {
     private String memberID;
     private String classID;
     private String status;
@@ -8,7 +8,7 @@ public class MemberClassRegistration {
     private LocalDate registrationDate; // format : YYYY-MM-DD
 
     
-    // CONSTRUCTORS
+    // CONSTRUCTOR
     public MemberClassRegistration(String memberID, String classID, LocalDate registrationDate, String status) {
         this.memberID = memberID;
         this.classID = classID;
@@ -29,10 +29,12 @@ public class MemberClassRegistration {
         return registrationDate;
     }
 
+    @Override
     public String getSearchKey() {
         return memberID + classID;
     }
 
+    @Override
     public String lineRepresentation() {
         return memberID + "," + classID + "," + registrationDate + "," + status;
     }
