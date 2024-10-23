@@ -1,4 +1,4 @@
-public class Class {
+public class Class implements PrimaryInterface {
     private String classID;
     private String className;
     private String trainerID;
@@ -25,10 +25,12 @@ public class Class {
         this.availableSeats = availableSeats;
     }
 
+    @Override
     public String lineRepresentation() {
         return classID + "," + className + "," + trainerID + "," + duration + "," + availableSeats;
     }
 
+    @Override
     public String getSearchKey() {
         return classID;
     }

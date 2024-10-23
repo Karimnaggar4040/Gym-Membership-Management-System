@@ -1,4 +1,4 @@
-class Member {
+public class Member implements PrimaryInterface{
     private String memberID;
     private String name;
     private String membershipType;
@@ -17,11 +17,12 @@ class Member {
         this.status = status;
     }
     
-    // METHODS
+    @Override
     public String lineRepresentation() {
         return memberID + "," + name + "," + membershipType + "," + email + "," + phoneNumber + "," + status;
     }
     
+    @Override
     public String getSearchKey() {
         return memberID;
     }

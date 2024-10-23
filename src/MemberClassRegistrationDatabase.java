@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class MemberClassRegistrationDatabase extends Database<MemberClassRegistration> {
+public class MemberClassRegistrationDatabase extends Database{
     public MemberClassRegistrationDatabase(String fileName) {
         super(fileName);
     }
@@ -10,9 +10,4 @@ public class MemberClassRegistrationDatabase extends Database<MemberClassRegistr
         return new MemberClassRegistration(parts[0], parts[1], LocalDate.parse(parts[2]),parts[3] );
 
     }
-
-    public String getSearchKey(MemberClassRegistration record) {
-        return record.getSearchKey();
-    }
-
 }

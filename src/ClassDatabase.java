@@ -1,5 +1,4 @@
-
-public class ClassDatabase extends Database<Class>{
+public class ClassDatabase extends Database{
     public ClassDatabase(String fileName) {
         super(fileName);
     }

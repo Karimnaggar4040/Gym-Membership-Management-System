@@ -1,4 +1,4 @@
-public class Trainer {
+public class Trainer implements PrimaryInterface {
     private String trainerId;
     private String name;
     private String email;
@@ -14,13 +14,13 @@ public class Trainer {
         this.phoneNumber = phoneNumber;
     }
 
-    // METHODS
+    @Override
     public String lineRepresentation() {
         return trainerId + "," + name + "," + email + "," + speciality + "," + phoneNumber;
     }
 
+    @Override
     public String getSearchKey() {
         return trainerId;
     }
-
 }
