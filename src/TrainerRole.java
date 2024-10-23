@@ -35,23 +35,23 @@ public class TrainerRole {
         return classDatabase.returnAllRecords().toArray(new Class[0]);  // new syntax need testing
     }
     
-    public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
-        Class[] classes = getListOfClasses();
-        Member[] members = getListOfMembers();
+    // public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
+    //     Class[] classes = getListOfClasses();
+    //     Member[] members = getListOfMembers();
         
-        MemberClassRegistration registration = new MemberClassRegistration(memberID, classID, registrationDate);
-        registrationDatabase.insertRecord(registration); // check if it's already exist in the database file
-    }
+    //     MemberClassRegistration registration = new MemberClassRegistration(memberID, classID, registrationDate);
+    //     registrationDatabase.insertRecord(registration); // check if it's already exist in the database file
+    // }
     
-    public boolean cancelRegistration(String memberID, String classID) {
+    // public boolean cancelRegistration(String memberID, String classID) {
 
-    }
+    // }
     
-    public MemberClassRegistration[] getListOfRegistrations() {
+    // public MemberClassRegistration[] getListOfRegistrations() {
         
-    }
+    // }
 
-    public void logout() {
+    // public void logout() {
 
-    }
+    // }
 }
