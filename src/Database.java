@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -52,14 +53,37 @@ public abstract class Database{
     }
 
     public void insertRecord(PrimaryInterface record) {
-        
+        for (PrimaryInterface record1 : records) {
+            if (record1.getSearchKey().equals(record.getSearchKey())) {
+                System.out.println("There is already a user with this data"); // We can edit the print statement later,is the record we are trying to enter already exists if will show this line then return.
+                System.out.println("Please try again");
+                return;
+            }
+        }
+        records.add(record);
     }
 
     public void deleteRecord(String key) {
-        
+        for (PrimaryInterface record : records) {
+            if (record.getSearchKey().equals(key)) {
+                records.remove(record);
+                return;
+            }
+        }
+        System.out.println("There is no user with this data");
     }
 
     public void saveToFile() {
-       
+       try{
+           FileWriter file = new FileWriter(fileName,false); //false means append is false, will overwrite
+           for (PrimaryInterface record : records) {
+               file.write(record.lineRepresentation());
+               file.write("\n");
+           }
+           System.out.println("File saved successfully");
+           file.close();
+       }catch (IOException e){
+           throw new RuntimeException(e);
+       }
     }
 }
