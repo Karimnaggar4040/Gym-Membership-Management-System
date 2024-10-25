@@ -28,6 +28,9 @@ public class MemberClassRegistration implements PrimaryInterface {
     public LocalDate getRegistrationDate() {
         return registrationDate;
     }
+    public void setRegistrationStatus(String status) {
+        this.status = status;
+    }
 
     @Override
     public String getSearchKey() {
