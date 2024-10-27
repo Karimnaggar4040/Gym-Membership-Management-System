@@ -91,6 +91,8 @@ public class TrainerRole {
             // refund if the member cancels within 3 days of registration
             if (!record_date.plusDays(3).isBefore(today)) {
                 System.out.println("You have a refund"); // el mafroud a3mel 7aga tania wala eh?
+            }else {
+                return false;
             }
             // update status to "cancelled" if the cancellation is valid
             record.setRegistrationStatus("cancelled");
