@@ -4,7 +4,6 @@ public class MemberClassRegistration implements PrimaryInterface {
     private String memberID;
     private String classID;
     private String status;
-
     private LocalDate registrationDate; // format : YYYY-MM-DD
 
     

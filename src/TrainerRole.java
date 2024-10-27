@@ -1,17 +1,20 @@
-import javax.imageio.spi.RegisterableService;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class TrainerRole {
     private Database memberDatabase;
-    private Database classDatabase;  
+    private Database classDatabase;
     private Database registrationDatabase;
 
     // DEFAULT CONSTRUCTOR
     public TrainerRole() {
         // Prepare the system to manage trainers by accessing the TrainerDatabase
         classDatabase = new ClassDatabase("Classes.txt");
+        classDatabase.readFromFile();
         memberDatabase = new MemberDatabase("Members.txt");
+        memberDatabase.readFromFile();
         registrationDatabase = new MemberClassRegistrationDatabase("Registrations.txt");
+        registrationDatabase.readFromFile();
     }
 
     // METHODS
@@ -19,25 +22,32 @@ public class TrainerRole {
         Member member = new Member(memberID, name, membershipType, email, phoneNumber, status);
         memberDatabase.insertRecord(member); // check if it's already exist in the database file
     }
-    
-    public Member[] getListOfMembers() {
-        return memberDatabase.returnAllRecords().toArray(new Member[0]);  // new syntax need testing
+
+    public ArrayList<PrimaryInterface> getListOfMembers() {
+        return memberDatabase.returnAllRecords();  // new syntax need testing
 
     }
-    
+
     public void addClass(String classID, String className, String trainerID, int duration, int maxParticipants) {
         Class class1 = new Class(classID, className, trainerID, duration, maxParticipants);
         classDatabase.insertRecord(class1); // check if it's already exist in the database file
     }
-    
-    public Class[] getListOfClasses() {
-        return classDatabase.returnAllRecords().toArray(new Class[0]); // new syntax need testing
+
+    public ArrayList<Class> getListOfClasses() {
+        ArrayList<PrimaryInterface> registrations = classDatabase.returnAllRecords();
+        ArrayList<Class> classes = new ArrayList<>();
+        for (PrimaryInterface registration : registrations) {
+            if (registration instanceof Class)
+                classes.add((Class) registration);
+        }
+        return classes;
     }
 
-    public MemberClassRegistration[] getListOfRegistrations() {
-        return registrationDatabase.returnAllRecords().toArray(new MemberClassRegistration[0]); // new syntax need testing
+    // We will need to access the method getAvailableSeats in the main, so we can't return an ArrayList of type PrimaryInterface because then the method getAvailable won't be seen in the main
+    public ArrayList<PrimaryInterface> getListOfRegistrations() {
+        return registrationDatabase.returnAllRecords();
     }
-    
+
     public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
         PrimaryInterface classInterface = classDatabase.getRecord(classID);  // should i cast this? or should i do the loop or somthing else??
         if (classInterface instanceof Class) {
@@ -46,7 +56,7 @@ public class TrainerRole {
             if (c.getAvailableSeats() > 0) {
                 MemberClassRegistration registration = new MemberClassRegistration(memberID, classID,
                         registrationDate, "active");
-                registrationDatabase.insertRecord(registration); // check if it's already exist in the database file
+                registrationDatabase.insertRecord(registration); // check if it's already exist in the database file => DONE
                 c.setAvailableSeats(c.getAvailableSeats() - 1); // decrement the available seats
                 return true;
             }
@@ -69,9 +79,9 @@ public class TrainerRole {
 
         return false;
     }
-    
+
     public boolean cancelRegistration(String memberID, String classID) {
-        PrimaryInterface recordInterface = registrationDatabase.getRecord(classID + memberID);
+        PrimaryInterface recordInterface = registrationDatabase.getRecord(memberID + classID);
         if (recordInterface instanceof MemberClassRegistration) {
             MemberClassRegistration record = (MemberClassRegistration) recordInterface; // need to rethink about using casting here
             // verify the date
@@ -79,7 +89,7 @@ public class TrainerRole {
             LocalDate today = LocalDate.now();
 
             // refund if the member cancels within 3 days of registration
-            if (record_date.plusDays(3).isBefore(today)) {
+            if (!record_date.plusDays(3).isBefore(today)) {
                 System.out.println("You have a refund"); // el mafroud a3mel 7aga tania wala eh?
             }
             // update status to "cancelled" if the cancellation is valid
@@ -92,7 +102,7 @@ public class TrainerRole {
         }
         return false;
     }
-    
+
     public void logout() {
         // save all the data to the database files
         memberDatabase.saveToFile();

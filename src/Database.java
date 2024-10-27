@@ -17,8 +17,13 @@ public abstract class Database{
     public void readFromFile() {
         try {
             String content = Files.readString(Paths.get(fileName));
+//            if (content.isEmpty()){
+//                System.out.println("Empty file");
+//            }
+            content = content.replace(" ","");
             String[] lines = content.split("\n");
             for (String line : lines) {
+                line = line.replace("\r","");
                 PrimaryInterface newRecord = createRecordFrom(line);
                 records.add(newRecord);
             }
@@ -55,12 +60,13 @@ public abstract class Database{
     public void insertRecord(PrimaryInterface record) {
         for (PrimaryInterface record1 : records) {
             if (record1.getSearchKey().equals(record.getSearchKey())) {
-                System.out.println("There is already a user with this data"); // We can edit the print statement later,is the record we are trying to enter already exists if will show this line then return.
+                System.out.println("This data already exists"); // We can edit the print statement later,is the record we are trying to enter already exists if will show this line then return.
                 System.out.println("Please try again");
                 return;
             }
         }
         records.add(record);
+        System.out.println("Added Successfully");
     }
 
     public void deleteRecord(String key) {
