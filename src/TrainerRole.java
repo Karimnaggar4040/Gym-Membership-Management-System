@@ -56,6 +56,8 @@ public class TrainerRole {
             if (c.getAvailableSeats() > 0) {
                 MemberClassRegistration registration = new MemberClassRegistration(memberID, classID,
                         registrationDate, "active");
+                if (registrationDatabase.contains(registration.getSearchKey()))
+                    return false;
                 registrationDatabase.insertRecord(registration); // check if it's already exist in the database file => DONE
                 c.setAvailableSeats(c.getAvailableSeats() - 1); // decrement the available seats
                 return true;
