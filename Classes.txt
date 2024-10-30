@@ -1,4 +1,0 @@
-C101,Yoga,T001,60,0
-C202,Faraghfelgaw,T002,90,40
-C303,El3abyaborto2any,T003,80,24
-C808,Da3k,T200,60,20
