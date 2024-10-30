@@ -17,9 +17,10 @@ public abstract class Database{
     public void readFromFile() {
         try {
             String content = Files.readString(Paths.get(fileName));
-//            if (content.isEmpty()){
-//                System.out.println("Empty file");
-//            }
+            if (content.isEmpty()){
+                System.out.println("Empty file");
+                return;
+            }
             content = content.replace(" ","");
             String[] lines = content.split("\n");
             for (String line : lines) {

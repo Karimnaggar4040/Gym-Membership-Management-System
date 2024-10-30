@@ -18,7 +18,7 @@ public class Class implements PrimaryInterface {
 
     // METHODS
     public int getAvailableSeats() {
-        return availableSeats;
+        return this.availableSeats;
     }
 
     public void setAvailableSeats(int availableSeats) {

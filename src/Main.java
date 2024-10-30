@@ -9,8 +9,7 @@ public class Main {
     static TrainerRole trainerRole = new TrainerRole();
 
     public static void main(String[] args) {
-cancelClassRegistration();
-trainerRole.logout();
+        addTrainer();
     }
 
     // MENUS METHODS
@@ -110,6 +109,7 @@ trainerRole.logout();
     // DONE
     private static void addTrainer() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Size before: " + adminRole.getListOfTrainers().size());
         try {
             System.out.print("Enter ID: ");
             String id = scanner.nextLine();
@@ -122,7 +122,7 @@ trainerRole.logout();
             System.out.print("Phone Number: ");
             String phoneNumber = scanner.nextLine();
             adminRole.addTrainer(id, name, email, speciality, phoneNumber);
-            System.out.println("Size of the list of trainers: " + adminRole.getListOfTrainers().size());
+            System.out.println("Size after " + adminRole.getListOfTrainers().size());
         } catch (RuntimeException e) {
             System.out.println("Error happened while inputting data please try again ");
             Main.addTrainer();
@@ -206,14 +206,14 @@ trainerRole.logout();
     }
 
     private static void cancelClassRegistration() {
-        System.out.println("size before: "+trainerRole.getListOfRegistrations().size());
+        System.out.println("size before: " + trainerRole.getListOfRegistrations().size());
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Member's ID: ");
         String id = sc.nextLine();
         System.out.print("Enter Class's ID: ");
         String classID = sc.nextLine();
-        trainerRole.cancelRegistration(id,classID);
-        System.out.println("size after: "+trainerRole.getListOfRegistrations().size());
+        trainerRole.cancelRegistration(id, classID);
+        System.out.println("size after: " + trainerRole.getListOfRegistrations().size());
     } // DONE
 
     private static void seeAvailableClasses() {
