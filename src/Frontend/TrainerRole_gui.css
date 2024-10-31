@@ -1,0 +1,22 @@
+.root{
+    -fx-background-color: #B9C6AE;
+}
+
+.button{
+    -fx-background-color: #B9C6AE;
+    -fx-border-width: 1px;
+    -fx-font-weight: bold;
+}
+.button:hover{
+    -fx-background-color: #38405F ;
+}
+.label{
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-background-color: #757083;
+    -fx-padding: 10;
+}
+.Menu-Button{
+    -fx-pref-width: 130;
+    -fx-pref-height: 50;
+}
