@@ -19,19 +19,19 @@ public class Frontend extends Application {
         IntroductionStage.show();
         IntroductionStage.setResizable(false);
 
-        Button button1 = new Button("Admin Role");
-        button1.setOnAction(e -> {
+        Button adminRoleButton = new Button("Admin Role");
+        adminRoleButton.setOnAction(e -> {
 
         });
-        Button button2 = new Button("Trainer Role");
-        button2.setOnAction(e -> {
+        Button trainerRoleButton = new Button("Trainer Role");
+        trainerRoleButton.setOnAction(e -> {
             IntroductionStage.close();
             TrainerRole_gui.trainerRole();
         });
 
 
         VBox layout = new VBox();
-        layout.getChildren().addAll(button1,button2);
+        layout.getChildren().addAll(adminRoleButton,trainerRoleButton);
         Scene scene = new Scene(layout,300,250);
         IntroductionStage.setScene(scene);
     }

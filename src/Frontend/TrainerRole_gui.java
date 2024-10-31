@@ -8,11 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.nio.file.Paths;
 import java.util.Objects;
 
 public class TrainerRole_gui {
@@ -38,7 +36,7 @@ public class TrainerRole_gui {
         grid.add(password,1,1);
         grid.add(loginButton,1,2);
         Scene scene = new Scene(grid);
-        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("TrainerRole_gui.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
 
@@ -62,29 +60,29 @@ public class TrainerRole_gui {
         stage.setTitle("Trainer Role");
         stage.setResizable(false);
 
-        Button addMember = new Button("Add Member");
-        addMember.getStyleClass().add("Menu-Button");
-        Button viewMember = new Button("View Member");
-        viewMember.getStyleClass().add("Menu-Button");
-        Button addClass = new Button("Add Class");
-        addClass.getStyleClass().add("Menu-Button");
-        Button viewClass = new Button("View Class");
-        viewClass.getStyleClass().add("Menu-Button");
-        Button register = new Button("Register Member");
-        register.getStyleClass().add("Menu-Button");
-        Button cancel = new Button("Cancel Registration");
-        cancel.getStyleClass().add("Menu-Button");
-        Button view = new Button("View Registration");
-        view.getStyleClass().add("Menu-Button");
+        Button addMemberButton = new Button("Add Member");
+        addMemberButton.getStyleClass().add("Menu-Button");
+        Button viewMemberButton = new Button("View Member");
+        viewMemberButton.getStyleClass().add("Menu-Button");
+        Button addClassButton = new Button("Add Class");
+        addClassButton.getStyleClass().add("Menu-Button");
+        Button viewClassButton = new Button("View Class");
+        viewClassButton.getStyleClass().add("Menu-Button");
+        Button registerButton = new Button("Register Member");
+        registerButton.getStyleClass().add("Menu-Button");
+        Button cancelButton = new Button("Cancel Registration");
+        cancelButton.getStyleClass().add("Menu-Button");
+        Button viewButton = new Button("View Registration");
+        viewButton.getStyleClass().add("Menu-Button");
 
         VBox layout = new VBox();
         layout.setPadding(new Insets(20,20,20,20));
         layout.setAlignment(Pos.CENTER);
         layout.setSpacing(10);
-        layout.getChildren().addAll(addMember,viewMember,addClass,viewClass,register,cancel,view);
+        layout.getChildren().addAll(addMemberButton, viewMemberButton, addClassButton, viewClassButton, registerButton, cancelButton, viewButton);
 
         Scene scene = new Scene(layout,300,300);
-        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("TrainerRole_gui.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
