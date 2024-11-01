@@ -19,9 +19,9 @@ public class TrainerRole {
     }
 
     // METHODS
-    public void addMember(String memberID, String name, String membershipType, String email, String phoneNumber, String status) {
+    public boolean addMember(String memberID, String name, String membershipType, String email, String phoneNumber, String status) {
         Member member = new Member(memberID, name, membershipType, email, phoneNumber, status);
-        memberDatabase.insertRecord(member); // check if it's already exist in the database file
+        return memberDatabase.insertRecord(member); // check if it's already exist in the database file
     }
 
     public ArrayList<PrimaryInterface> getListOfMembers() {
@@ -29,9 +29,9 @@ public class TrainerRole {
 
     }
 
-    public void addClass(String classID, String className, String trainerID, int duration, int maxParticipants) {
+    public boolean addClass(String classID, String className, String trainerID, int duration, int maxParticipants) {
         Class class1 = new Class(classID, className, trainerID, duration, maxParticipants);
-        classDatabase.insertRecord(class1); // check if it's already exist in the database file
+        return classDatabase.insertRecord(class1); // check if it's already exist in the database file
     }
 
     public ArrayList<Class> getListOfClasses() {

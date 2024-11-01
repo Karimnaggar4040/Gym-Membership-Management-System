@@ -59,16 +59,17 @@ public abstract class Database{
         return null;
     }
 
-    public void insertRecord(PrimaryInterface record) {
+    public boolean insertRecord(PrimaryInterface record) {
         for (PrimaryInterface record1 : records) {
             if (record1.getSearchKey().equals(record.getSearchKey())) {
                 System.out.println("This data already exists"); // We can edit the print statement later,is the record we are trying to enter already exists if will show this line then return.
                 System.out.println("Please try again");
-                return;
+                return false;
             }
         }
         records.add(record);
         System.out.println("Added Successfully");
+        return true;
     }
 
     public void deleteRecord(String key) {

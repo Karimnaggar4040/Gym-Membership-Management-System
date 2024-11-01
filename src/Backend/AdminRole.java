@@ -12,9 +12,10 @@ public class AdminRole {
     }
 
     // METHODS
-    public void addTrainer(String trainerId, String name, String email, String specialty, String phoneNumber) {
+    public boolean addTrainer(String trainerId, String name, String email, String specialty, String phoneNumber) {
         Trainer trainer = new Trainer(trainerId, name, email, specialty, phoneNumber);
-        database.insertRecord(trainer);// check if it's already exist in the database file
+        // check if it's already exist in the database file
+        return database.insertRecord(trainer);
     }
 
     public ArrayList<PrimaryInterface> getListOfTrainers() {
