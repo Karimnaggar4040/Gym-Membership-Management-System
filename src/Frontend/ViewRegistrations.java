@@ -1,5 +1,9 @@
 package Frontend;
 
+import Backend.Backend;
+import Backend.PrimaryInterface;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,10 +19,12 @@ public class ViewRegistrations {
         Stage stage = new Stage();
         stage.setResizable(true);
         stage.setTitle("View Registrations");
+        stage.setWidth(700);
+        stage.setHeight(400);
 
         VBox vbox = new VBox();
         TableView<MemberRegistrationGui> tableView = new TableView<>();
-        tableView.setItems(TrainerRoleLogin.getMemberRegistrations());
+        tableView.setItems(getMemberRegistrations());
         vbox.getChildren().addAll(tableView);
         Scene scene = new Scene(vbox, 500, 300);
         stage.setScene(scene);
@@ -45,4 +51,14 @@ public class ViewRegistrations {
         tableView.getColumns().add(registrationDateColumn);
 
     }
+    private static ObservableList<MemberRegistrationGui> getMemberRegistrations() {
+        ObservableList<MemberRegistrationGui> memberRegistrations = FXCollections.observableArrayList();
+        for (PrimaryInterface memberClassRegistration : Backend.getListOfRegistrations()) {
+            String content = memberClassRegistration.lineRepresentation();
+            String[] contentParts = content.split(",");
+            MemberRegistrationGui memberRegistrationGui = new MemberRegistrationGui(contentParts[0], contentParts[1], LocalDate.parse(contentParts[2]), contentParts[3]);
+            memberRegistrations.add(memberRegistrationGui);
+        }
+        return memberRegistrations;
+    } // DONE
 }

@@ -31,62 +31,48 @@ public class AddTrainer {
 
         Label phoneNumberLabel = new Label("Phone Number");
         TextField phoneNumberTextField = new TextField();
-        Label statusLabel = new Label("Status");
-        ComboBox<String> statusComboBox = new ComboBox<>();
-        statusComboBox.getItems().addAll("Active", "Inactive");
-        Button addMemberButton = new Button("Add Member");
-        addMemberButton.getStyleClass().add("Action-Button");
-        addMemberButton.setOnAction(e -> {
-            String memberId = trainerIdTextField.getText();
+
+        Button addButton = new Button("Add");
+        addButton.getStyleClass().add("Action-Button");
+        addButton.setOnAction(e -> {
+            String trainerId = trainerIdTextField.getText();
             String name = nameTextField.getText();
             String email = emailTextField.getText();
+            String speciality = specialityTextField.getText();
             String phoneNumber = phoneNumberTextField.getText();
-            String status = statusComboBox.getValue();
-
 
             // Validate if the user has entered an empty field
-            if (memberId.isEmpty() || name.isEmpty()  || email.isEmpty() || phoneNumber.isEmpty() || status.isEmpty()) {
-                AlertBox.display("Invalid Member", "Please enter a valid member data");
-                stage.close();
-                AddMember.add();
-                return;
+            if (trainerId.isEmpty() || name.isEmpty()  || email.isEmpty() || phoneNumber.isEmpty() || speciality.isEmpty()) {
+                AlertBox.display("Invalid Trainer", "Please enter a valid trainer data");
             }
 
             //Validate if the user has entered a valid email format
             if (!Validations.validateEmail(email)) {
                 AlertBox.display("Invalid Data", "Please enter a valid email format");
-                stage.close();
-                AddMember.add();
                 return;
             }
 
             // Validate Phone Number Format
             if (!Validations.validatePhoneNumber(phoneNumber)) {
                 AlertBox.display("Wrong Format", "Phone Number Format is wrong, please try again");
-                stage.close();
-                AddMember.add();
                 return;
             }
 
-            // Validate Member ID
-            if (!Validations.validateMemberId(memberId)) {
-                AlertBox.display("Invalid Member", "Please enter a valid member ID");
-                stage.close();
-                AddMember.add();
+            // Validate trainer ID
+            if (!Validations.validateTrainerId(trainerId)) {
+                AlertBox.display("Invalid Trainer", "Please enter a valid Trainer ID");
                 return;
             }
 
-            //boolean confirmation = Backend.addMember(memberId, name, email, phoneNumber, status);
-            // Validate if Member Already Exists
-//            if (!confirmation) {
-//                AlertBox.display("Invalid Member Error", "Member Already exists, please try again");
-//                stage.close();
-//                AddMember.add();
-//                return;
-//            }
+            boolean confirmation = Backend.addTrainer(trainerId, name, email, speciality, phoneNumber);
+            // Validate if trainer Already Exists
+            if (!confirmation) {
+                AlertBox.display("Invalid Trainer Error", "Trainer Already exists, please try again");
+                return;
+            }
 
             //If all is good
-            MessageBox.display("Message", "Member with ID " + memberId + " added successfully");
+            MessageBox.display("Message", "Trainer with ID " + trainerId + " added successfully");
             stage.close();
             AdminMenu.adminMenu();
         });
@@ -96,15 +82,13 @@ public class AddTrainer {
         grid.add(trainerIdTextField,1,0);
         grid.add(nameLabel,0,1);
         grid.add(nameTextField,1,1);
-        grid.add(specialityLabel,0,2);
-        grid.add(emailLabel,0,3);
-        grid.add(emailTextField,1,3);
+        grid.add(emailLabel,0,2);
+        grid.add(emailTextField,1,2);
+        grid.add(specialityLabel,0,3);
+        grid.add(specialityTextField,1,3);
         grid.add(phoneNumberLabel,0,4);
         grid.add(phoneNumberTextField,1,4);
-        grid.add(statusLabel,0,5);
-        grid.add(statusComboBox,1,5);
-        grid.add(addMemberButton,1,6);
-        //createGridPane grid = new createGridPane(trainerIdLabel, trainerIdTextField, nameLabel, nameTextField, membershipTypeLabel, membershipTypeComboBox, phoneNumberLabel, phoneNumberTextField, emailLabel, emailTextField, statusLabel, statusComboBox, addMemberButton);
+        grid.add(addButton,1,6);
         Scene scene = new Scene(grid, 300, 300);
         scene.getStylesheets().add(Objects.requireNonNull(AddTrainer.class.getResource("Styles.css")).toExternalForm());
         stage.setScene(scene);

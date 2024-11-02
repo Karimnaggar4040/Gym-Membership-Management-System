@@ -1,5 +1,9 @@
 package Frontend;
 
+import Backend.Backend;
+import Backend.Class;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,9 +20,11 @@ public class ViewClasses {
         VBox vbox = new VBox();
         Scene scene = new Scene(vbox, 300, 300);
         TableView<ClassGui> classGuiTableView = new TableView<>();
-        classGuiTableView.setItems(TrainerRoleLogin.getClasses());
+        classGuiTableView.setItems(getClasses());
         vbox.getChildren().add(classGuiTableView);
         stage.setScene(scene);
+        stage.setWidth(700);
+        stage.setHeight(400);
         stage.show();
 
         TableColumn<ClassGui, String> classIdColumn = new TableColumn<>("Class ID");
@@ -46,4 +52,15 @@ public class ViewClasses {
         availableSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("availableSeats"));
         classGuiTableView.getColumns().add(availableSeatsColumn);
     }
+
+    private static ObservableList<ClassGui> getClasses() {
+        ObservableList<ClassGui> classes = FXCollections.observableArrayList();
+        for (Class class_ : Backend.getListOfClasses()) {
+            String classContent = class_.lineRepresentation();
+            String[] classDetails = classContent.split(",");
+            ClassGui classGui = new ClassGui(classDetails[0], classDetails[1], classDetails[2], Integer.parseInt(classDetails[3]), Integer.parseInt(classDetails[4]));
+            classes.add(classGui);
+        }
+        return classes;
+    } // DONE
 }

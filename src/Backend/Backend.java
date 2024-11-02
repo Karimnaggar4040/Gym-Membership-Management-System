@@ -18,6 +18,10 @@ public class Backend {
         return adminRole.addTrainer(id, name, email, speciality, phoneNumber);
     }
 
+    public static boolean removeTrainer(String id) {
+        return  adminRole.removeTrainer(id);
+    }
+
     public static boolean addMember(String id, String name, String membershipType, String email, String phoneNumber, String status) {
         return trainerRole.addMember(id, name, membershipType, email, phoneNumber, status);
     }

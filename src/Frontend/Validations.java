@@ -22,6 +22,10 @@ public class Validations {
         char[] memberIdChars = memberId.toCharArray();
         return memberIdChars[0] == 'M';
     }
+    protected static boolean validateTrainerId(String trainerId){
+        char[] memberIdChars = trainerId.toCharArray();
+        return memberIdChars[0] == 'T';
+    }
 
     protected static boolean validateClassId(String classId){
         char[] classIdChars = classId.toCharArray();

@@ -6,6 +6,8 @@ public class MemberGui {
     private String memberShipType;
     private String email;
     private String phoneNumber;
+    private String status;
+
 
     public String getStatus() {
         return status;
@@ -14,8 +16,6 @@ public class MemberGui {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    private String status;
 
     public String getMemberID() {
         return memberID;

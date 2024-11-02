@@ -72,14 +72,14 @@ public abstract class Database{
         return true;
     }
 
-    public void deleteRecord(String key) {
+    public boolean deleteRecord(String key) {
         for (PrimaryInterface record : records) {
             if (record.getSearchKey().equals(key)) {
                 records.remove(record);
-                return;
+                return true;
             }
         }
-        System.out.println("There is no user with this data");
+        return false;
     }
 
     public void saveToFile() {

@@ -25,7 +25,6 @@ public class Frontend extends Application {
     public void start(Stage IntroductionStage) throws Exception {
         IntroductionStage.setTitle("Gym Membership Management System");
 
-
         // position the window
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
@@ -57,7 +56,11 @@ public class Frontend extends Application {
 
         scene.getStylesheets().add(Objects.requireNonNull(TrainerRoleLogin.class.getResource("Styles.css")).toExternalForm());
         IntroductionStage.setScene(scene);
-        IntroductionStage.setResizable(false);
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        double centerX = (screenBounds.getWidth() - IntroductionStage.getWidth()) / 2;
+        double centerY = (screenBounds.getHeight() - IntroductionStage.getHeight()) / 2;
+
+
         IntroductionStage.show();
     }
 

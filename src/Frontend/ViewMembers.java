@@ -1,5 +1,9 @@
 package Frontend;
 
+import Backend.Backend;
+import Backend.PrimaryInterface;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -12,10 +16,12 @@ public class ViewMembers {
         Stage stage = new Stage();
         stage.setTitle("View member");
         stage.setResizable(true);
+        stage.setWidth(700);
+        stage.setHeight(400);
         VBox vbox = new VBox();
         TableView<MemberGui> tableView = new TableView<>();
         vbox.getChildren().add(tableView);
-        tableView.setItems(TrainerRoleLogin.getMembers());
+        tableView.setItems(getMembers());
         Scene scene = new Scene(vbox, 300, 300);
         stage.setScene(scene);
         stage.show();
@@ -51,4 +57,15 @@ public class ViewMembers {
         tableView.getColumns().add(statusColumn);
 
     } // TODO: status needs to be handled
+
+    private static ObservableList<MemberGui> getMembers() {
+        ObservableList<MemberGui> members = FXCollections.observableArrayList();
+        for (PrimaryInterface member : Backend.getListOfMembers()) {
+            String memberContent = member.lineRepresentation();
+            String[] memberDetails = memberContent.split(",");
+            MemberGui memberGui = new MemberGui(memberDetails[0], memberDetails[1], memberDetails[2], memberDetails[3], memberDetails[4],memberDetails[5]);
+            members.add(memberGui);
+        }
+        return members;
+    } // DONE
 }

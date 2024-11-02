@@ -22,8 +22,8 @@ public class AdminRole {
         return database.returnAllRecords(); // new syntax need testing
     }
 
-    public void removeTrainer(String key) {
-        database.deleteRecord(key);// if key not found need to be handled => Handled in the deleteRecord method
+    public boolean removeTrainer(String key) {
+        return  database.deleteRecord(key);// if key not found need to be handled => Handled in the deleteRecord method
     }
 
     public void logout() {
