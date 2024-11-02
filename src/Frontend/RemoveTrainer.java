@@ -19,6 +19,13 @@ public class RemoveTrainer {
         Label trainerIdLabel = new Label("Trainer ID");
         TextField trainerIdTextField = new TextField();
 
+        Button backButton = new Button("Back");
+        backButton.getStyleClass().add("Action-Button");
+        backButton.setOnAction(e -> {
+            stage.close();
+            AdminMenu.adminMenu();
+        });
+
         Button removeButton = new Button("Remove");
         removeButton.getStyleClass().add("Action-Button");
         removeButton.setOnAction(e -> {
@@ -45,7 +52,8 @@ public class RemoveTrainer {
         GridPane grid = new GridPane();
         grid.add(trainerIdLabel,0,0);
         grid.add(trainerIdTextField,1,0);
-        grid.add(removeButton,0,1);
+        grid.add(backButton,0,1);
+        grid.add(removeButton,1,1);
         Scene scene = new Scene(grid, 300, 300);
         scene.getStylesheets().add(Objects.requireNonNull(AddTrainer.class.getResource("Styles.css")).toExternalForm());
         stage.setScene(scene);

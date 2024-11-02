@@ -32,6 +32,13 @@ public class AddTrainer {
         Label phoneNumberLabel = new Label("Phone Number");
         TextField phoneNumberTextField = new TextField();
 
+        Button backButton = new Button("Back");
+        backButton.getStyleClass().add("Action-Button");
+        backButton.setOnAction(e -> {
+            stage.close();
+            AdminMenu.adminMenu();
+        });
+
         Button addButton = new Button("Add");
         addButton.getStyleClass().add("Action-Button");
         addButton.setOnAction(e -> {
@@ -88,6 +95,7 @@ public class AddTrainer {
         grid.add(specialityTextField,1,3);
         grid.add(phoneNumberLabel,0,4);
         grid.add(phoneNumberTextField,1,4);
+        grid.add(backButton,0,6);
         grid.add(addButton,1,6);
         Scene scene = new Scene(grid, 300, 300);
         scene.getStylesheets().add(Objects.requireNonNull(AddTrainer.class.getResource("Styles.css")).toExternalForm());

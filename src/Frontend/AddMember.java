@@ -33,6 +33,7 @@ public class AddMember {
         statusComboBox.getItems().addAll("Active", "Inactive");
         Button addMemberButton = new Button("Add Member");
         addMemberButton.getStyleClass().add("Action-Button");
+
         Button backButton = new Button("Back");
         backButton.getStyleClass().add("Action-Button");
         addMemberButton.setOnAction(e -> {
@@ -85,7 +86,6 @@ public class AddMember {
         backButton.setOnAction(e -> {
             stage.close();
             TrainerMenu.menu();
-            return;
         });
 
         GridPane grid = new GridPane();
