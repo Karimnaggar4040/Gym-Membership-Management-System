@@ -7,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ public class Frontend extends Application {
         Button trainerRoleButton = new Button("Trainer Role");
         trainerRoleButton.setOnAction(e -> {
             IntroductionStage.close();
-            TrainerRole_gui.trainerRole();
+            TrainerRoleLogin.trainerRole();
         });
 
 
@@ -44,7 +43,7 @@ public class Frontend extends Application {
         grid.add(adminRoleButton, 0, 0);
         grid.add(trainerRoleButton, 0, 1);
         Scene scene = new Scene(grid,300,100);
-        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(TrainerRoleLogin.class.getResource("Styles.css")).toExternalForm());
         IntroductionStage.setScene(scene);
 
     }

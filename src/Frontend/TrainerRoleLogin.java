@@ -7,7 +7,6 @@ import Constants.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,10 +16,8 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class TrainerRole_gui {
+public class TrainerRoleLogin {
     public static void trainerRole() {
         Stage stage = new Stage();
         stage.setTitle("Trainer Role");
@@ -41,7 +38,7 @@ public class TrainerRole_gui {
         grid.add(password, 1, 1);
         grid.add(loginButton, 1, 2);
         Scene scene = new Scene(grid);
-        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(TrainerRoleLogin.class.getResource("Styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
 
@@ -52,12 +49,73 @@ public class TrainerRole_gui {
                 AlertBox.display("Invalid Credentials", "Please enter a valid username/password");
             } else if (inputUsername.equals(LoginCredentials.TRAINER_USERNAME) && inputPassword.equals(LoginCredentials.TRAINER_PASSWORD)) {
                 stage.close();
-                trainerMenu();
+                TrainerMenu.menu();
             } else
                 AlertBox.display("Invalid Credentials", "Please enter a valid username/password");
         });
     }
 
+//    public static void trainerMenu() {
+//        Stage stage = new Stage();
+//        stage.setTitle("Trainer Role");
+//        stage.setResizable(false);
+//
+//        Button addMemberButton = new Button("Add Member");
+//        addMemberButton.setOnAction(e -> {
+//            addMember();
+//            stage.close();
+//        });
+//        addMemberButton.getStyleClass().add("Menu-Button");
+//
+//        Button viewMemberButton = new Button("View Members");
+//        viewMemberButton.getStyleClass().add("Menu-Button");
+//        viewMemberButton.setOnAction(e -> viewMembers());
+//
+//        Button addClassButton = new Button("Add Class");
+//        addClassButton.setOnAction(e -> {
+//            addClass();
+//        });
+//        addClassButton.getStyleClass().add("Menu-Button");
+//
+//        Button viewClassButton = new Button("View Classes");
+//        viewClassButton.setOnAction(e -> viewClasses());
+//        viewClassButton.getStyleClass().add("Menu-Button");
+//
+//        Button registerButton = new Button("Register Member");
+//        registerButton.setOnAction(e -> {
+//            addMemberRegistration();
+//            stage.close();
+//        });
+//        registerButton.getStyleClass().add("Menu-Button");
+//
+//        Button cancelButton = new Button("Cancel Registration");
+//        cancelButton.getStyleClass().add("Menu-Button");
+//
+//        Button viewButton = new Button("View Registrations");
+//        viewButton.setOnAction(e -> viewRegistrations());
+//        viewButton.getStyleClass().add("Menu-Button");
+//
+//        Button logoutButton = new Button("Logout");
+//        logoutButton.getStyleClass().add("Menu-Button");
+//        logoutButton.setOnAction(e -> {
+//            Backend.trainerLogout();
+//            stage.close();
+//        });
+//
+//        VBox layout = new VBox();
+//        layout.setPadding(new Insets(20, 20, 20, 20));
+//        layout.setAlignment(Pos.CENTER);
+//        layout.setSpacing(10);
+//        layout.getChildren().addAll(addMemberButton, viewMemberButton, addClassButton, viewClassButton, registerButton, cancelButton, viewButton,logoutButton);
+//
+//        Scene scene = new Scene(layout, 300, 300);
+//        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+
+
+   /* private static void addMemberRegistration() {
     public static void trainerMenu() {
         Stage stage = new Stage();
         stage.setTitle("Trainer Role");
@@ -109,7 +167,7 @@ public class TrainerRole_gui {
         layout.setPadding(new Insets(20, 20, 20, 20));
         layout.setAlignment(Pos.CENTER);
         layout.setSpacing(10);
-        layout.getChildren().addAll(addMemberButton, viewMemberButton, addClassButton, viewClassButton, registerButton, cancelButton, viewButton);
+        layout.getChildren().addAll(addMemberButton, viewMemberButton, addClassButton, viewClassButton, registerButton, cancelButton, viewButton,logoutButton);
 
         Scene scene = new Scene(layout, 300, 300);
         scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
@@ -292,78 +350,90 @@ public class TrainerRole_gui {
         scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
-    } // DONE
+    } // DONE */
 
-    private static void addClass() {
-        Stage stage = new Stage();
-        stage.setTitle("Add Class");
-        stage.setResizable(false);
+//    private static void addClass() {
+//        Stage stage = new Stage();
+//        stage.setTitle("Add Class");
+//        stage.setResizable(false);
+//
+//        Label classIdLabel = new Label("Class ID");
+//        TextField classIdTextField = new TextField();
+//        Label classNameLabel = new Label("Class Name");
+//        TextField classNameTextField = new TextField();
+//        Label trainerIdLabel = new Label("Trainer ID");
+//        TextField trainerIdTextField = new TextField();
+//        Label durationLabel = new Label("Duration");
+//        Spinner<Integer> durationSpinner = new Spinner<>();
+//        SpinnerValueFactory<Integer> durationValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(30,120,30,5);
+//        durationSpinner.setValueFactory(durationValueFactory);
+//        durationSpinner.setEditable(true);
+//        Label availableSeatsLabel = new Label("Available Seats");
+//        Spinner<Integer> availableSeatsSpinner = new Spinner<>();
+//        SpinnerValueFactory<Integer> availableSeatsValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5,60,5,1);
+//        availableSeatsSpinner.setValueFactory(availableSeatsValueFactory);
+//        availableSeatsSpinner.setEditable(true);
+//
+//        Button addClassButton = new Button("Add Class");
+//        addClassButton.getStyleClass().add("Action-Button");
+//        addClassButton.setOnAction(e -> {
+//            // Validate no empty fields
+//            if (classNameTextField.getText().isEmpty() || classIdTextField.getText().isEmpty()) {
+//                AlertBox.display("Invalid Class", "Please enter a valid class data");
+//                addClass();
+//            }
+//
+//            String classId = classIdTextField.getText();
+//            String className = classNameTextField.getText();
+//            String trainerId = trainerIdTextField.getText();
+//            int duration = durationSpinner.getValue();
+//            int availableSeats = availableSeatsSpinner.getValue();
+//
+//            // Validate that the trainer exists
+//            if (Backend.searchForTrainer(trainerId) == null){
+//                AlertBox.display("Invalid Trainer", "Trainer does not exist, please try again");
+//                stage.close();
+//                addClass();
+//                return;
+//            }
+//            // Validate Class ID
+//            if (!validateClassId(classId)) {
+//                AlertBox.display("Invalid Class", "Please enter a valid class ID Format");
+//                stage.close();
+//                addClass();
+//                return;
+//            }
+//            boolean confirmation = Backend.addNewClasses(classId, className, trainerId, duration, availableSeats);
+//            if (!confirmation) {
+//                AlertBox.display("Invalid Class ", "Class Already Exists, please try again");
+//                addClass();
+//                return;
+//            }
+//            MessageBox.display("Class Added Successfully", "Class added successfully");
+//            stage.close();
+//            trainerMenu();
+//        });
+//
+//        GridPane grid = createGridPane();
+//        grid.add(classIdLabel, 0, 0);
+//        grid.add(classIdTextField, 1, 0);
+//        grid.add(classNameLabel, 0, 1);
+//        grid.add(classNameTextField, 1, 1);
+//        grid.add(trainerIdLabel, 0, 2);
+//        grid.add(trainerIdTextField, 1, 2);
+//        grid.add(durationLabel, 0, 3);
+//        grid.add(durationSpinner,1,3);
+//        grid.add(availableSeatsLabel, 0, 4);
+//        grid.add(availableSeatsSpinner,1,4);
+//        grid.add(addClassButton,1,5);
+//
+//        Scene scene = new Scene(grid, 300, 300);
+//        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
+//        stage.setScene(scene);
+//        stage.show();
+//    } // DONE
 
-        Label classIdLabel = new Label("Class ID");
-        TextField classIdTextField = new TextField();
-        Label classNameLabel = new Label("Class Name");
-        TextField classNameTextField = new TextField();
-        Label trainerIdLabel = new Label("Trainer ID");
-        TextField trainerIdTextField = new TextField();
-        Label durationLabel = new Label("Duration");
-        Spinner<Integer> durationSpinner = new Spinner<>();
-        SpinnerValueFactory<Integer> durationValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(30,120,30,5);
-        durationSpinner.setValueFactory(durationValueFactory);
-        durationSpinner.setEditable(true);
-        Label availableSeatsLabel = new Label("Available Seats");
-        Spinner<Integer> availableSeatsSpinner = new Spinner<>();
-        SpinnerValueFactory<Integer> availableSeatsValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5,60,5,1);
-        availableSeatsSpinner.setValueFactory(availableSeatsValueFactory);
-        availableSeatsSpinner.setEditable(true);
-
-        Button addClassButton = new Button("Add Class");
-        addClassButton.getStyleClass().add("Action-Button");
-        addClassButton.setOnAction(e -> {
-            // Validate no empty fields
-            if (classNameTextField.getText().isEmpty() || classIdTextField.getText().isEmpty()) {
-                AlertBox.display("Invalid Class", "Please enter a valid class data");
-                addClass();
-            }
-
-            String classId = classIdTextField.getText();
-            String className = classNameTextField.getText();
-            String trainerId = trainerIdTextField.getText();
-            int duration = durationSpinner.getValue();
-            int availableSeats = availableSeatsSpinner.getValue();
-
-            // Validate Class ID
-            if (!validateClassId(classId)) {
-                AlertBox.display("Invalid Class", "Please enter a valid class ID Format");
-                stage.close();
-                addClass();
-                return;
-            }
-            boolean confirmation = Backend.addNewClasses(classId, className, trainerId, duration, availableSeats);
-            if (!confirmation) {
-                AlertBox.display("Invalid Class ", "Class Already Exists, please try again");
-                addClass();
-            }
-        });
-
-        GridPane grid = createGridPane();
-        grid.add(classIdLabel, 0, 0);
-        grid.add(classIdTextField, 1, 0);
-        grid.add(classNameLabel, 0, 1);
-        grid.add(classNameTextField, 1, 1);
-        grid.add(trainerIdLabel, 0, 2);
-        grid.add(trainerIdTextField, 1, 2);
-        grid.add(durationLabel, 0, 3);
-        grid.add(durationSpinner,1,3);
-        grid.add(availableSeatsLabel, 0, 4);
-        grid.add(availableSeatsSpinner,1,4);
-        grid.add(addClassButton,1,5);
-
-        Scene scene = new Scene(grid, 300, 300);
-        scene.getStylesheets().add(Objects.requireNonNull(TrainerRole_gui.class.getResource("Styles.css")).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    } // DONE
-
+    /*
     private static void viewRegistrations() {
         Stage stage = new Stage();
         stage.setResizable(true);
@@ -481,6 +551,7 @@ public class TrainerRole_gui {
         availableSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("availableSeats"));
         classGuiTableView.getColumns().add(availableSeatsColumn);
     } // DONE
+    */
 
     public static GridPane createGridPane() {
         GridPane grid = new GridPane();
@@ -490,7 +561,8 @@ public class TrainerRole_gui {
         return grid;
     }
 
-    private static ObservableList<MemberGui> getMembers() {
+
+    protected static ObservableList<MemberGui> getMembers() {
         ObservableList<MemberGui> members = FXCollections.observableArrayList();
         for (PrimaryInterface member : Backend.getListOfMembers()) {
             String memberContent = member.lineRepresentation();
@@ -501,7 +573,7 @@ public class TrainerRole_gui {
         return members;
     } // DONE
 
-    private static ObservableList<ClassGui> getClasses() {
+    protected static ObservableList<ClassGui> getClasses() {
         ObservableList<ClassGui> classes = FXCollections.observableArrayList();
         for (Class class_ : Backend.getListOfClasses()) {
             String classContent = class_.lineRepresentation();
@@ -512,7 +584,7 @@ public class TrainerRole_gui {
         return classes;
     } // DONE
 
-    private static ObservableList<MemberRegistrationGui> getMemberRegistrations() {
+    protected static ObservableList<MemberRegistrationGui> getMemberRegistrations() {
         ObservableList<MemberRegistrationGui> memberRegistrations = FXCollections.observableArrayList();
         for (PrimaryInterface memberClassRegistration : Backend.getListOfRegistrations()) {
             String content = memberClassRegistration.lineRepresentation();
@@ -523,27 +595,5 @@ public class TrainerRole_gui {
         return memberRegistrations;
     } // DONE
 
-    private static boolean validateEmail(String email) {
-        String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        Pattern pattern = Pattern.compile(EMAIL_REGEX);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    } // DONE
 
-    private static boolean validatePhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() != 11)
-            return false;
-        return phoneNumber.matches("\\d+"); // Returns true if str contains only digits
-
-    } // DONE
-
-    // ID Validations
-    private static boolean validateMemberId(String memberId){
-        char[] memberIdChars = memberId.toCharArray();
-        return memberIdChars[0] == 'M';
-    }
-    private static boolean validateClassId(String classId){
-        char[] classIdChars = classId.toCharArray();
-        return classIdChars[0] == 'C';
-    }
 }

@@ -2,3 +2,4 @@ C101,Yoga,T001,60,0
 C202,Faragh f el gaw,T002,90,40
 C303,El3ab ya borto2any,T003,80,24
 C808,Da3k,T200,60,20
+C308,le3b w lahw,T8008,30,5
