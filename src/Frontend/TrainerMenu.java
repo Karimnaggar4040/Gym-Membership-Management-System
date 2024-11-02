@@ -30,6 +30,7 @@ public class TrainerMenu {
         Button addClassButton = new Button("Add Class");
         addClassButton.setOnAction(e -> {
             AddClass.add();
+            stage.close();
         });
         addClassButton.getStyleClass().add("Menu-Button");
 

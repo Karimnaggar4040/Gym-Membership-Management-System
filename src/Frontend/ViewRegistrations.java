@@ -20,7 +20,7 @@ public class ViewRegistrations {
         TableView<MemberRegistrationGui> tableView = new TableView<>();
         tableView.setItems(TrainerRoleLogin.getMemberRegistrations());
         vbox.getChildren().addAll(tableView);
-        Scene scene = new Scene(vbox, 300, 300);
+        Scene scene = new Scene(vbox, 500, 300);
         stage.setScene(scene);
         stage.show();
 

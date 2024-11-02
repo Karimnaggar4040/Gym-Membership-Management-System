@@ -4,9 +4,11 @@ import Backend.Backend;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
 
@@ -22,8 +24,7 @@ public class Frontend extends Application {
     @Override
     public void start(Stage IntroductionStage) throws Exception {
         IntroductionStage.setTitle("Gym Membership Management System");
-        IntroductionStage.show();
-        IntroductionStage.setResizable(false);
+
 
         // position the window
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
@@ -53,9 +54,18 @@ public class Frontend extends Application {
         grid.add(adminRoleButton, 0, 0);
         grid.add(trainerRoleButton, 0, 1);
         Scene scene = new Scene(grid,300,100);
+
         scene.getStylesheets().add(Objects.requireNonNull(TrainerRoleLogin.class.getResource("Styles.css")).toExternalForm());
         IntroductionStage.setScene(scene);
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        double centerX = (screenBounds.getWidth() - IntroductionStage.getWidth()) / 2;
+        double centerY = (screenBounds.getHeight() - IntroductionStage.getHeight()) / 2;
 
+        // Set the stage position to the center
+        IntroductionStage.setX(centerX);
+        IntroductionStage.setY(centerY);
+        IntroductionStage.setResizable(false);
+        IntroductionStage.show();
     }
 
 }

@@ -33,6 +33,8 @@ public class AddClass {
 
         Button addClassButton = new Button("Add Class");
         addClassButton.getStyleClass().add("Action-Button");
+        Button backButton = new Button("Back");
+        backButton.getStyleClass().add("Action-Button");
         addClassButton.setOnAction(e -> {
             // Validate no empty fields
             if (classNameTextField.getText().isEmpty() || classIdTextField.getText().isEmpty()) {
@@ -70,6 +72,10 @@ public class AddClass {
             stage.close();
             TrainerMenu.menu();
         });
+        backButton.setOnAction(e -> {
+            stage.close();
+            TrainerMenu.menu();
+        });
         GridPane grid = TrainerRoleLogin.createGridPane();
         grid.add(classIdLabel, 0, 0);
         grid.add(classIdTextField, 1, 0);
@@ -82,6 +88,7 @@ public class AddClass {
         grid.add(availableSeatsLabel, 0, 4);
         grid.add(availableSeatsSpinner,1,4);
         grid.add(addClassButton,1,5);
+        grid.add(backButton,0,5);
 
         Scene scene = new Scene(grid, 300, 300);
         scene.getStylesheets().add(Objects.requireNonNull(TrainerRoleLogin.class.getResource("Styles.css")).toExternalForm());
