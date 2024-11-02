@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -25,6 +26,8 @@ public class AddMemberRegistration {
         registrationDatePicker.setValue(LocalDate.now());
         Button addClassButton = new Button("Register");
         addClassButton.getStyleClass().add("Action-Button");
+        Button backButton = new Button("Back");
+        backButton.getStyleClass().add("Action-Button");
         addClassButton.setOnAction(e -> {
             String memberId = memberIdTextField.getText();
             String classId = classIdTextField.getText();
@@ -75,17 +78,21 @@ public class AddMemberRegistration {
             stage.close();
             TrainerMenu.menu();
         });
+        backButton.setOnAction(e -> {
+            stage.close();
+            TrainerMenu.menu();
+        });
 
-//        GridPane grid = createGridPane();
-//        grid.add(memberIdLabel,0,0);
-//        grid.add(memberIdTextField,1,0);
-//        grid.add(classIdLabel,0,1);
-//        grid.add(classIdTextField,1,1);
-//        grid.add(registrationDateLabel,0,2);
-//        grid.add(registrationDatePicker,1,2);
-//        grid.add(addClassButton,1,3);
-        createGridPane grid = new createGridPane(memberIdLabel, memberIdTextField, classIdLabel, classIdTextField, registrationDateLabel, registrationDatePicker, addClassButton);
-        Scene scene = new Scene(grid.getGridPane(), 300, 300);
+        GridPane grid = TrainerRoleLogin.createGridPane();
+        grid.add(memberIdLabel,0,0);
+        grid.add(memberIdTextField,1,0);
+        grid.add(classIdLabel,0,1);
+        grid.add(classIdTextField,1,1);
+        grid.add(registrationDateLabel,0,2);
+        grid.add(registrationDatePicker,1,2);
+        grid.add(addClassButton,1,3);
+        grid.add(backButton,0,3);
+        Scene scene = new Scene(grid, 300, 300);
         scene.getStylesheets().add(Objects.requireNonNull(TrainerRoleLogin.class.getResource("Styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();

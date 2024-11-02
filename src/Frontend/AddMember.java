@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class AddMember {
-    public static void add() {
+    protected static void add() {
         Stage stage = new Stage();
         stage.setTitle("Add Member");
         stage.setResizable(false);
@@ -33,6 +33,8 @@ public class AddMember {
         statusComboBox.getItems().addAll("Active", "Inactive");
         Button addMemberButton = new Button("Add Member");
         addMemberButton.getStyleClass().add("Action-Button");
+        Button backButton = new Button("Back");
+        backButton.getStyleClass().add("Action-Button");
         addMemberButton.setOnAction(e -> {
             String memberId = memberIdTextField.getText();
             String name = nameTextField.getText();
@@ -88,6 +90,11 @@ public class AddMember {
             stage.close();
             TrainerMenu.menu();
         });
+        backButton.setOnAction(e -> {
+            stage.close();
+            TrainerMenu.menu();
+            return;
+        });
 
         GridPane grid = new GridPane();
         grid.add(memberIdLabel,0,0);
@@ -102,6 +109,7 @@ public class AddMember {
         grid.add(phoneNumberTextField,1,4);
         grid.add(statusLabel,0,5);
         grid.add(statusComboBox,1,5);
+        grid.add(backButton,0,6);
         grid.add(addMemberButton,1,6);
         //createGridPane grid = new createGridPane(memberIdLabel, memberIdTextField, nameLabel, nameTextField, membershipTypeLabel, membershipTypeComboBox, phoneNumberLabel, phoneNumberTextField, emailLabel, emailTextField, statusLabel, statusComboBox, addMemberButton);
         Scene scene = new Scene(grid, 300, 300);
