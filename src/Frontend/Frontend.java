@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.Screen;
 
 import java.util.Objects;
 
@@ -24,9 +25,18 @@ public class Frontend extends Application {
         IntroductionStage.show();
         IntroductionStage.setResizable(false);
 
+        // position the window
+        double screenWidth = Screen.getPrimary().getBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getBounds().getHeight();
+        double xPosition = screenWidth * 0.4;
+        double yPosition = screenHeight * 0.3;
+        IntroductionStage.setX(xPosition);
+        IntroductionStage.setY(yPosition);
+
         Button adminRoleButton = new Button("Admin Role");
         adminRoleButton.setOnAction(e -> {
-
+            IntroductionStage.close();
+            AdminRoleLogin.adminRoleLogin();
         });
         Button trainerRoleButton = new Button("Trainer Role");
         trainerRoleButton.setOnAction(e -> {
