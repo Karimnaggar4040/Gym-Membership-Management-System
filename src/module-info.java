@@ -5,5 +5,5 @@ module Gym.Membership.Management.System {
     requires javafx.web;
     requires javafx.media;
     requires javafx.swing;
-    opens Frontend;
+    opens frontend;
 }
