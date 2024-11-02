@@ -47,32 +47,24 @@ public class AddMember {
             // Validate if the user has entered an empty field
             if (memberId.isEmpty() || name.isEmpty() || membershipType.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || status.isEmpty()) {
                 AlertBox.display("Invalid Member", "Please enter a valid member data");
-                stage.close();
-                AddMember.add();
                 return;
             }
 
             //Validate if the user has entered a valid email format
             if (!Validations.validateEmail(email)) {
                 AlertBox.display("Invalid Data", "Please enter a valid email format");
-                stage.close();
-                AddMember.add();
                 return;
             }
 
             // Validate Phone Number Format
             if (!Validations.validatePhoneNumber(phoneNumber)) {
                 AlertBox.display("Wrong Format", "Phone Number Format is wrong, please try again");
-                stage.close();
-                AddMember.add();
                 return;
             }
 
             // Validate Member ID
             if (!Validations.validateMemberId(memberId)) {
                 AlertBox.display("Invalid Member", "Please enter a valid member ID");
-                stage.close();
-                AddMember.add();
                 return;
             }
 

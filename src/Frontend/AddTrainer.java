@@ -29,9 +29,6 @@ public class AddTrainer {
         Label specialityLabel = new Label("Speciality");
         TextField specialityTextField = new TextField();
 
-
-
-
         Label phoneNumberLabel = new Label("Phone Number");
         TextField phoneNumberTextField = new TextField();
         Label statusLabel = new Label("Status");

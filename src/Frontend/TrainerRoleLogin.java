@@ -49,11 +49,14 @@ public class TrainerRoleLogin {
             String inputPassword = password.getText();
             if (inputUsername.isEmpty() || inputPassword.isEmpty()) {
                 AlertBox.display("Invalid Credentials", "Please enter a valid username/password");
+                return;
             } else if (inputUsername.equals(LoginCredentials.TRAINER_USERNAME) && inputPassword.equals(LoginCredentials.TRAINER_PASSWORD)) {
                 stage.close();
                 TrainerMenu.menu();
-            } else
+            } else {
                 AlertBox.display("Invalid Credentials", "Please enter a valid username/password");
+                TrainerMenu.menu();
+            }
         });
     }
 
@@ -70,7 +73,7 @@ public class TrainerRoleLogin {
         for (PrimaryInterface member : Backend.getListOfMembers()) {
             String memberContent = member.lineRepresentation();
             String[] memberDetails = memberContent.split(",");
-            MemberGui memberGui = new MemberGui(memberDetails[0], memberDetails[1], memberDetails[2], memberDetails[3], memberDetails[4],memberDetails[5]);
+            MemberGui memberGui = new MemberGui(memberDetails[0], memberDetails[1], memberDetails[2], memberDetails[3], memberDetails[4], memberDetails[5]);
             members.add(memberGui);
         }
         return members;

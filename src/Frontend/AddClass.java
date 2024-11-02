@@ -39,7 +39,7 @@ public class AddClass {
             // Validate no empty fields
             if (classNameTextField.getText().isEmpty() || classIdTextField.getText().isEmpty()) {
                 AlertBox.display("Invalid Class", "Please enter a valid class data");
-                AddClass.add();
+                return;
             }
 
             String classId = classIdTextField.getText();
@@ -51,15 +51,11 @@ public class AddClass {
             // Validate that the trainer exists
             if (Backend.searchForTrainer(trainerId) == null) {
                 AlertBox.display("Invalid Trainer", "Trainer does not exist, please try again");
-                stage.close();
-                AddClass.add();
                 return;
             }
             // Validate Class ID
             if (!Validations.validateClassId(classId)) {
                 AlertBox.display("Invalid Class", "Please enter a valid class ID Format");
-                stage.close();
-                AddClass.add();
                 return;
             }
             boolean confirmation = Backend.addNewClasses(classId, className, trainerId, duration, availableSeats);

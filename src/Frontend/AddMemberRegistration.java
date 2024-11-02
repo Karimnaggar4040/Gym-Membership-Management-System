@@ -33,43 +33,37 @@ public class AddMemberRegistration {
             String classId = classIdTextField.getText();
             LocalDate registrationDate = registrationDatePicker.getValue();
 
+            if (memberId.isEmpty() || classId.isEmpty()) {
+                AlertBox.display("Error", "Please fill all the fields");
+                return;
+            }
             // Validate Member ID
             if (!Validations.validateMemberId(memberId)) {
                 AlertBox.display("Invalid Member", "Please enter a valid member ID");
-                stage.close();
-                add();
                 return;
             }
 
             // Validate that the member exists
             if (Backend.searchForMember(memberId) == null){
                 AlertBox.display("Invalid Member", "Member does not exist, please try again");
-                stage.close();
-                add();
                 return;
             }
 
             // Validate Class ID
             if (!Validations.validateClassId(classId)) {
                 AlertBox.display("Invalid Class", "Please enter a valid class ID");
-                stage.close();
-                add();
                 return;
             }
 
             // Validate that the class exists
             if (Backend.searchForClass(classId) == null){
                 AlertBox.display("Invalid Class", "Class does not exist, please try again");
-                stage.close();
-                add();
                 return;
             }
 
             boolean confirmation = Backend.addMemberRegistration(memberId, classId, registrationDate);
             if (!confirmation){
                 AlertBox.display("Registration Error","This registration already exists, please try again");
-                stage.close();
-                add();
                 return;
             }
 

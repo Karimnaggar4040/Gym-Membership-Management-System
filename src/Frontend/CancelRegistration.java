@@ -35,28 +35,23 @@ public class CancelRegistration {
 
             if (memberId.isEmpty() || classId.isEmpty()){
                 AlertBox.display("Invalid Data","Empty fields error, please try again");
-                stage.close();
                 return;
             }
             if (!Validations.validateMemberId(memberId)){
                 AlertBox.display("Invalid Member ID","Invalid Member ID");
-                stage.close();
                 return;
             }
             if (!Validations.validateClassId(classId)){
                 AlertBox.display("Invalid Class ID","Invalid Class ID");
-                stage.close();
                 return;
             }
             if (Backend.searchForMemberRegistrations(memberId+classId) == null){
                 AlertBox.display("Invalid Registration","Registration not found");
-                stage.close();
                 return;
             }
            boolean confirmation = Backend.cancelClassRegistration(memberId, classId);
             if (!confirmation){
                 AlertBox.display("Invalid Registration","Could not remove Registration");
-                stage.close();
                 return;
             }
             MessageBox.display("Cancellation Successful","Member With ID: "+memberId+" has cancelled the registration to class with ID: "+classId);
