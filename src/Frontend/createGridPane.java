@@ -43,7 +43,7 @@ public class createGridPane extends GridPane {
         this.button = button;
         grid.setAlignment(Pos.CENTER); //Check
         grid.setHgap(10);
-        grid.setVgap(10);
+        grid.setVgap(5);
         grid.setPadding(new Insets(15, 15, 15, 15));
         grid.add(label1, 0, 0);
         grid.add(textField1, 1, 0);
@@ -73,8 +73,8 @@ public class createGridPane extends GridPane {
         this.textField5 = textField5;
         this.button = button;
         grid.setAlignment(Pos.CENTER); //Check
-        grid.setHgap(15);
-        grid.setVgap(15);
+        grid.setHgap(10);
+        grid.setVgap(5);
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.add(label1, 0, 0);
         grid.add(textField1, 1, 0);
@@ -99,8 +99,8 @@ public class createGridPane extends GridPane {
         this.label4 = label4;
         this.textField4 = textField4;
         this.button = button;
-        grid.setHgap(15);
-        grid.setVgap(15);
+        grid.setHgap(10);
+        grid.setVgap(5);
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.add(label1, 0, 0);
         grid.add(textField1, 1, 0);
@@ -120,8 +120,8 @@ public class createGridPane extends GridPane {
         this.textField2 = textField2;
         this.label4 = label4;
         this.datePicker = datePicker;
-        grid.setHgap(15);
-        grid.setVgap(15);
+        grid.setHgap(10);
+        grid.setVgap(5);
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.add(label1, 0, 0);
         grid.add(textField1, 1, 0);

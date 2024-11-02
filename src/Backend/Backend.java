@@ -9,8 +9,7 @@ public class Backend {
     static AdminRole adminRole = new AdminRole();
     static TrainerRole trainerRole = new TrainerRole();
 
-    public static void main(String[] args) {
-
+    public static void main() {
     }
 
 
@@ -19,15 +18,15 @@ public class Backend {
         return adminRole.addTrainer(id, name, email, speciality, phoneNumber);
     }
 
-    public static boolean addMember(String id, String name, String membershipType, String email, String phoneNumber,String status) {
+    public static boolean addMember(String id, String name, String membershipType, String email, String phoneNumber, String status) {
         return trainerRole.addMember(id, name, membershipType, email, phoneNumber, status);
     }
 
-    public static boolean addNewClasses(String classID,String className,String trainerID,int duration,int seats) {
+    public static boolean addNewClasses(String classID, String className, String trainerID, int duration, int seats) {
         return trainerRole.addClass(classID, className, trainerID, duration, seats);
     }
 
-    public static boolean addMemberRegistration(String memberID,String classID, LocalDate registrationDate) {
+    public static boolean addMemberRegistration(String memberID, String classID, LocalDate registrationDate) {
         return trainerRole.registerMemberForClass(memberID, classID, registrationDate);
     } // DONE
 
@@ -93,7 +92,7 @@ public class Backend {
 
 
     // The 4 search functions for all persons (DONE)
-    private static PrimaryInterface searchForTrainer(String key) {
+    public static PrimaryInterface searchForTrainer(String key) {
         System.out.println("Searching for trainer with ID: " + key);
         for (PrimaryInterface trainer : adminRole.getListOfTrainers()) {
             if (trainer.getSearchKey().equals(key))
@@ -102,7 +101,7 @@ public class Backend {
         return null;
     }
 
-    private static PrimaryInterface searchForMember(String key) {
+    public static PrimaryInterface searchForMember(String key) {
         for (PrimaryInterface member : trainerRole.getListOfMembers()) {
             if (member.getSearchKey().equals(key))
                 return member;
@@ -110,7 +109,7 @@ public class Backend {
         return null;
     }
 
-    private static PrimaryInterface searchForClass(String key) {
+    public static PrimaryInterface searchForClass(String key) {
         for (PrimaryInterface classes : trainerRole.getListOfClasses()) {
             if (classes.getSearchKey().equals(key))
                 return classes;
@@ -118,12 +117,35 @@ public class Backend {
         return null;
     }
 
-    private static PrimaryInterface searchForMemberRegistrations(String key) {
+    public static PrimaryInterface searchForMemberRegistrations(String key) {
         for (PrimaryInterface memberRegistrations : trainerRole.getListOfRegistrations()) {
             if (memberRegistrations.getSearchKey().equals(key))
                 return memberRegistrations;
         }
         return null;
+    }
+
+    public static void trainerLogout(){
+        trainerRole.logout();
+    }
+    public static void adminLogout(){
+        adminRole.logout();
+    }
+    // ArrayLists Getters
+    public static ArrayList<PrimaryInterface> getListOfRegistrations() {
+        return trainerRole.getListOfRegistrations();
+    }
+
+    public static ArrayList<PrimaryInterface> getListOfMembers() {
+        return trainerRole.getListOfMembers();
+    }
+
+    public static ArrayList<Class> getListOfClasses() {
+        return trainerRole.getListOfClasses();
+    }
+
+    public static ArrayList<PrimaryInterface> getListOfTrainers() {
+        return adminRole.getListOfTrainers();
     }
 }
 

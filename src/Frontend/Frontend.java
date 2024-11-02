@@ -1,15 +1,16 @@
 package Frontend;
 
+import Backend.Backend;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
 public class Frontend extends Application {
 
     public static void main(String[] args) {
+        Backend.main();
         launch(args);
     }
 
@@ -34,6 +35,7 @@ public class Frontend extends Application {
         layout.getChildren().addAll(adminRoleButton,trainerRoleButton);
         Scene scene = new Scene(layout,300,250);
         IntroductionStage.setScene(scene);
+
     }
 
 }
