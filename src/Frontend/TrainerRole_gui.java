@@ -482,7 +482,7 @@ public class TrainerRole_gui {
         classGuiTableView.getColumns().add(availableSeatsColumn);
     } // DONE
 
-    private static GridPane createGridPane() {
+    public static GridPane createGridPane() {
         GridPane grid = new GridPane();
         grid.setHgap(15);
         grid.setVgap(15);

@@ -22,7 +22,7 @@ public abstract class Database{
                 System.out.println("Empty file");
                 return;
             }
-            content = content.replace(" ","");
+            //content = content.replace(" ","");
             String[] lines = content.split("\n");
             for (String line : lines) {
                 line = line.replace("\r","");
