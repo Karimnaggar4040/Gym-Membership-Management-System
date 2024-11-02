@@ -47,6 +47,10 @@ public class TrainerMenu {
 
         Button cancelButton = new Button("Cancel Registration");
         cancelButton.getStyleClass().add("Menu-Button");
+        cancelButton.setOnAction(e-> {
+            stage.close();
+            CancelRegistration.cancel();
+        });
 
         Button viewButton = new Button("View Registrations");
         viewButton.setOnAction(e -> ViewRegistrations.view());

@@ -48,15 +48,8 @@ public class Backend {
         System.out.println(memberClassRegistration.lineRepresentation());
     }
 
-    private static void cancelClassRegistration() {
-        System.out.println("size before: " + trainerRole.getListOfRegistrations().size());
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter Member's ID: ");
-        String id = sc.nextLine();
-        System.out.print("Enter Class's ID: ");
-        String classID = sc.nextLine();
-        trainerRole.cancelRegistration(id, classID);
-        System.out.println("size after: " + trainerRole.getListOfRegistrations().size());
+    public static boolean cancelClassRegistration(String memberID, String classID) {
+        return trainerRole.cancelRegistration(memberID, classID);
     } // DONE
 
     private static void seeAvailableClasses() {
@@ -89,7 +82,6 @@ public class Backend {
         System.out.println("Trainer Details");
         System.out.println(trainer.lineRepresentation());
     } // DONE
-
 
     // The 4 search functions for all persons (DONE)
     public static PrimaryInterface searchForTrainer(String key) {

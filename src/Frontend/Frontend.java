@@ -57,13 +57,6 @@ public class Frontend extends Application {
 
         scene.getStylesheets().add(Objects.requireNonNull(TrainerRoleLogin.class.getResource("Styles.css")).toExternalForm());
         IntroductionStage.setScene(scene);
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        double centerX = (screenBounds.getWidth() - IntroductionStage.getWidth()) / 2;
-        double centerY = (screenBounds.getHeight() - IntroductionStage.getHeight()) / 2;
-
-        // Set the stage position to the center
-        IntroductionStage.setX(centerX);
-        IntroductionStage.setY(centerY);
         IntroductionStage.setResizable(false);
         IntroductionStage.show();
     }
